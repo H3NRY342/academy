@@ -1,0 +1,70 @@
+# Entorno virtual
+venv/
+ENV/
+env/
+.venv/
+
+# Byte-compiled / archivos cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Logs
+*.log
+
+# Archivos temporales
+*.swp
+*.swo
+*.tmp
+*.bak
+
+# Configuración de bases de datos locales o dumps
+*.sqlite3
+*.db
+*.sql
+
+# Archivos de configuración sensible
+.env
+.env.*
+
+# Archivos de dependencias no necesarias
+pip-log.txt
+pip-delete-this-directory.txt
+
+# IDEs y editores
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# MacOS
+.DS_Store
+
+# Archivos de test coverage
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+
+# Documentación construida
+_build/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+.env
+# Archivos de distribución
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Uvicorn reload (opcional)
+reload/

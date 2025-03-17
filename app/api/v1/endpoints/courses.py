@@ -2,8 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, status, Query
 from app.core.factory import AbstractFactory
 from app.api.db.dependencies import get_db
 from sqlalchemy.orm import Session
-from app.schemas.courses import PaginatedCoursesResponse, CoursesResponse, CoursesCreate, CourseUpdate
-from app.auth.middleware import get_current_user, role_required
+from app.schemas.courses import PaginatedCoursesResponse, CoursesResponse, CoursesCreate
 from typing import Optional, Tuple, List
 
 router = APIRouter()
@@ -17,7 +16,6 @@ def get_courses_service(db: Session = Depends(get_db)):
 
 @router.post("/course-create", status_code=status.HTTP_201_CREATED)
 def create_course(course_create: CoursesCreate, db: Session = Depends(get_db)):
-    """Crea un nuevo curso."""
     courses_service = get_courses_service(db)
 
     if not course_create:
@@ -89,7 +87,7 @@ def get_course_by_id(course_id: int, db: Session = Depends(get_db)):
 
 @router.put("/courses/{course_id}")
 def update_course(course_id: int, course_update: CoursesCreate, db: Session = Depends(get_db)):
-    """Actualiza un curso existente."""
+    """Actualiza un curso existent"""
     courses_service = get_courses_service(db)
 
     try:
@@ -102,7 +100,7 @@ def update_course(course_id: int, course_update: CoursesCreate, db: Session = De
 
 @router.delete("/courses/{course_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_course(course_id: int, db: Session = Depends(get_db)):
-    """Elimina un curso por su ID."""
+    """Elimina un curso por su id"""
     courses_service = get_courses_service(db)
     try:
         courses_service.delete_course(course_id)

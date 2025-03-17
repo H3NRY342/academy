@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 from typing import List
 from app.schemas.user import UserBase, UserCreate
 from app.schemas.auth import Token
-from app.auth.middleware import get_current_user, role_required
+from app.auth.middleware import role_required
 
 router = APIRouter()
 

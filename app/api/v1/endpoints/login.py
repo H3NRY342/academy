@@ -20,6 +20,6 @@ def login(login_request: LoginRequest, db: Session = Depends(get_db)):
     if not auth_service.verify_password(login_request.password, user.hashed_password):
         raise HTTPException(status_code=400, detail="Contraseña incorrecta")
 
-    access_token = auth_service.create_access_token({"sub": user.username})
+    access_token = auth_service.create_access_token({"sub": user.username, "roles": [user.role.name]})
 
     return {"access_token": access_token, "token_type": "bearer"}
