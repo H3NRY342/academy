@@ -1,57 +1,91 @@
+---
+
 # 🚀 Proyecto FastAPI - Academy API
 
 Este proyecto es una API REST construida con **FastAPI**, diseñada para ser modular, escalable y mantenible. Incluye autenticación con **JWT**, acceso a base de datos mediante **SQLAlchemy**, validación de datos con **Pydantic**, y sigue el patrón de diseño **Abstract Factory Method** para la creación de objetos desacoplados.
 
 ---
 
-## ⚙️ Comandos para ejecutar el proyecto
+## ⚙️ Pasos para ejecutar el proyecto
 
-1. **Clona el repositorio:**
+### 1. Clonar el repositorio
 
-   ```bash
-   git clone <URL_DEL_REPOSITORIO>
-   cd <CARPETA_DEL_PROYECTO>
-   ```
+```bash
+git clone <URL_DEL_REPOSITORIO>
+cd <CARPETA_DEL_PROYECTO>
+```
 
-2. **Instala las dependencias del proyecto:**
+---
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+### 2. Crear y activar un entorno virtual (recomendado)
 
-3. **Configura las variables de entorno:**
+#### En **Linux / MacOS**:
 
-   Crea un archivo `.env` en la raíz del proyecto con el siguiente contenido:
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
 
-   ```dotenv
-   DB_ENGINE=mysql
-   DB_NAME=academy
-   DB_USER=XXXXXXXXXX
-   DB_PASSWORD=XXXXXXXXXXX
-   DB_HOST=XXXXXXXXX
-   DB_PORT=XXXXXXXX
-   SECRET_KEY=XXXXXXX
-   ```
+#### En **Windows**:
 
-4. **Carga el script SQL con los datos iniciales:**
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
 
-   Se incluye un script SQL para iniciar la base de datos con datos precargados. Puedes encontrarlo en la carpeta `/scripts`:
+---
 
-   ```bash
-   mysql -u root -p academy < scripts/init_db.sql
-   ```
+### 3. Instalar las dependencias
 
-5. **Levanta el servidor de desarrollo:**
+Una vez activado el entorno virtual, instala los paquetes necesarios:
 
-   ```bash
-   uvicorn app.main:app --reload
-   ```
+```bash
+pip install -r requirements.txt
+```
 
-   La aplicación estará disponible en:
+---
 
-   ```
-   http://127.0.0.1:8000
-   ```
+### 4. Configurar las variables de entorno
+
+Crea un archivo `.env` en la raíz del proyecto con el siguiente contenido:
+
+```dotenv
+DB_ENGINE=mysql
+DB_NAME=academy
+DB_USER=root
+DB_PASSWORD=root
+DB_HOST=127.0.0.1
+DB_PORT=3306
+SECRET_KEY=12312ASFASDQ234QASDQ
+```
+
+---
+
+### 5. Inicializar la base de datos con datos precargados
+
+El proyecto incluye un script SQL para poblar la base de datos con información inicial.
+
+Ejecuta el script en tu servidor MySQL:
+
+```bash
+mysql -u root -p academy < scripts/init_db.sql
+```
+
+---
+
+### 6. Ejecutar el servidor de desarrollo
+
+Inicia el servidor FastAPI utilizando **Uvicorn**:
+
+```bash
+uvicorn app.main:app --reload
+```
+
+La API estará disponible en:
+
+```
+http://127.0.0.1:8000
+```
 
 ---
 
@@ -68,9 +102,9 @@ Este proyecto es una API REST construida con **FastAPI**, diseñada para ser mod
 
 ## 📐 Patrón de Diseño: Abstract Factory Method
 
-Se ha implementado el **Abstract Factory Method** para desacoplar la creación de repositorios y servicios, facilitando la escalabilidad del proyecto.
+Este proyecto implementa el **Abstract Factory Method** para desacoplar la lógica de creación de objetos, permitiendo una mayor flexibilidad y escalabilidad.
 
-Puedes aprender más sobre este patrón en la siguiente documentación:
+Puedes leer más sobre este patrón aquí:  
 👉 [Abstract Factory Method - Refactoring Guru](https://refactoring.guru/design-patterns/abstract-factory)
 
 ---
@@ -95,13 +129,15 @@ app/
 │   └── sql_user_repository.py       # Repositorio con acceso a base de datos SQL
 └── services/
     └── user_service.py              # Lógica de negocio del módulo de usuarios
+scripts/
+└── init_db.sql                      # Script para cargar datos iniciales
 ```
 
 ---
 
 ## 📚 Documentación de la API
 
-FastAPI genera automáticamente la documentación interactiva:
+FastAPI genera automáticamente la documentación de la API. Puedes acceder a ella una vez el servidor esté corriendo:
 
 - Swagger UI:  
   👉 [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
@@ -113,16 +149,15 @@ FastAPI genera automáticamente la documentación interactiva:
 
 ## ✅ Requisitos previos
 
-- Python 3.9+
-- MySQL Server
+- Python 3.10+
+- MySQL 
 - Pip
 
 ---
 
 ## 📝 Notas adicionales
 
-- El proyecto incluye un archivo `scripts/init_db.sql` para cargar datos de prueba y empezar a utilizar la API de inmediato.
-- Las credenciales de la base de datos y el `SECRET_KEY` se gestionan a través de variables de entorno declaradas en el archivo `.env`.
-- Se recomienda **NO usar las credenciales de ejemplo en producción**.
+- Las credenciales proporcionadas son solo para entornos de desarrollo. **No uses estas credenciales en producción**.
+- Recuerda activar el entorno virtual cada vez que trabajes en el proyecto.
 
 ---
