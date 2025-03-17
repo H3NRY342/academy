@@ -52,11 +52,11 @@ Crea un archivo `.env` en la raíz del proyecto con el siguiente contenido:
 ```dotenv
 DB_ENGINE=mysql
 DB_NAME=academy
-DB_USER=root
-DB_PASSWORD=root
-DB_HOST=127.0.0.1
-DB_PORT=3306
-SECRET_KEY=12312ASFASDQ234QASDQ
+DB_USER=xxxxxxxxxxx
+DB_PASSWORD=xxxxxxxxxxx
+DB_HOST=xxxxxxxxxxx
+DB_PORT=xxxxxxxxxxx
+SECRET_KEY=xxxxxxxxxxx
 ```
 
 ---
