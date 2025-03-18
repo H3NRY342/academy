@@ -134,8 +134,7 @@ class SQLCoursesRepository(AbstractCoursesRepository):
         """Actualiza un curso existente en la base de datos."""
 
         course = self.db.query(Course).filter(Course.id == course_id).first()
-        if course:
-            raise ValueError("Curso no encontrado")
+
         if not course:
             raise ValueError("Curso no encontrado")
 
